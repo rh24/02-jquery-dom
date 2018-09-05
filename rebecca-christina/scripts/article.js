@@ -55,8 +55,12 @@ rawData.sort(function(a,b) {
 
 rawData.forEach((rawDataObject) => {
   articles.push(new Article(rawDataObject));
-}) 
+})
 
-for(let i = 0; i < articles.length; i++) {
-  $('#articles').append(articles[i].toHtml());
-}
+// for(let i = 0; i < articles.length; i++) {
+//   $('#articles').append(articles[i].toHtml());
+// }
+
+articles.forEach((articleInstance) => {
+  $('#articles').append(articleInstance.toHtml());
+})
