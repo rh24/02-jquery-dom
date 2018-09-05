@@ -21,7 +21,7 @@ Article.prototype.toHtml = function() {
   // The benefit of cloning the article is that we can keep the old article as a template and in its original place on the DOM. Then we use a copy of the article and create a new article and append it to the DOM.
 
   let $newArticle = $('article.template').clone();
-  $newArticle.addClass('clone');
+  $newArticle.removeClass('template');
   /* TODO: This cloned article still has a class of template. In our modules.css stylesheet, we should give all elements with a class of template a display of none so that our template does not display in the browser. But, we also need to make sure we're not accidentally hiding our cloned article. */
 
   if (!this.publishedOn) $newArticle.addClass('draft');
@@ -56,10 +56,6 @@ rawData.sort(function(a,b) {
 rawData.forEach((rawDataObject) => {
   articles.push(new Article(rawDataObject));
 })
-
-// for(let i = 0; i < articles.length; i++) {
-//   $('#articles').append(articles[i].toHtml());
-// }
 
 articles.forEach((articleInstance) => {
   $('#articles').append(articleInstance.toHtml());
